@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>機材詳細</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    .detail-section {
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #f8f9fa;
+    }
+
+    .section-title {
+      font-weight: bold;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #dee2e6;
+      padding-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+  <h1 class="mb-4">機材詳細</h1>
+
+  <!-- 操作ボタン -->
+  <div class="d-flex justify-content-between mb-4">
+    <a href="/machines" class="btn btn-secondary">機材一覧に戻る</a>
+    <a th:href="@{'/machines/edit/' + ${machine.id}}" class="btn btn-warning">編集</a>
+  </div>
+
+  <!-- 機材詳細情報 -->
+  <div class="card shadow">
+    <div class="card-body">
+      <h5 class="card-title text-center mb-4" th:text="${machine.name}"></h5>
+
+      <!-- 基本情報セクション -->
+      <div class="detail-section">
+        <h6 class="section-title">基本情報</h6>
+        <div class="row">
+          <div class="col-md-6">
+            <p><strong>メーカー:</strong> <span th:text="${machine.manufacturer}"></span></p>
+          </div>
+          <div class="col-md-6">
+            <p><strong>型式:</strong> <span th:text="${machine.model}"></span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ステータス情報セクション -->
+      <div class="detail-section">
+        <h6 class="section-title">ステータス情報</h6>
+        <div class="row">
+          <div class="col-md-6">
+            <p><strong>現在のステータス:</strong> <span th:text="${machine.status.status}"></span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 営業所情報セクション -->
+      <div class="detail-section">
+        <h6 class="section-title">営業所情報</h6>
+        <div class="row">
+          <div class="col-md-6">
+            <p><strong>営業所名:</strong> <span th:text="${machine.location.name}"></span></p>
+          </div>
+          <div class="col-md-6">
+            <p><strong>住所:</strong> <span th:text="${machine.location.address}"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

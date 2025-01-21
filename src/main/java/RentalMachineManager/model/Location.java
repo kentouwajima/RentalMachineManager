@@ -5,12 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Machine {
+public class Location {
   private int id;
   private String name;
-  private String manufacturer;
-  private String model;
-  private MachineStatus status;
-  private Location location;
+  private String address;
 
 }

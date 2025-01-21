@@ -17,4 +17,8 @@ public class MachineService {
     return machineRepository.findAll();
   }
 
+  public Machine getMachineById(int id) {
+    return machineRepository.findById(id); // 詳細情報を取得する
+  }
+
 }
