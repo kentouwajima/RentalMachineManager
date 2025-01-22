@@ -27,5 +27,8 @@ public class MachineService {
     machineRepository.insertMachine(machine);
   }
 
+  public void deleteMachine(int id) {
+    machineRepository.deleteById(id);
+  }
 
 }

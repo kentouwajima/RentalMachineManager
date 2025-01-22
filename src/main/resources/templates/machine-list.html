@@ -33,7 +33,9 @@
           <td th:text="${machine.model}"></td>
           <td>
             <a th:href="@{'/machines/' + ${machine.id}}" class="btn btn-info btn-sm">詳細</a>
-            <a th:href="@{'/machines/delete/' + ${machine.id}}" class="btn btn-danger btn-sm">削除</a>
+            <form th:action="@{'/machines/delete/' + ${machine.id}}" method="post" style="display:inline;">
+              <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('本当に削除しますか？');">削除</button>
+            </form>
           </td>
         </tr>
         </tbody>

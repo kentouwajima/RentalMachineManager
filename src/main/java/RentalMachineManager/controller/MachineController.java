@@ -30,8 +30,7 @@ public class MachineController {
 
   @GetMapping("/")
     public String showTopPage(Model model) {
-      // 必要に応じてモデルに属性を追加できます
-      return "index"; // トップページのテンプレート名
+      return "index";
     }
 
     @GetMapping("/machines")
@@ -68,7 +67,6 @@ public class MachineController {
         @RequestParam("locationId") int locationId,
         Machine machine
     ) {
-      // ステータスと営業所のオブジェクトを作成
       MachineStatus status = new MachineStatus();
       status.setId(statusId);
       machine.setStatus(status);
@@ -77,9 +75,14 @@ public class MachineController {
       location.setId(locationId);
       machine.setLocation(location);
 
-      // データベースに保存
       machineService.createMachine(machine);
       return "redirect:/machines";
     }
+
+  @PostMapping("/machines/delete/{id}")
+  public String deleteMachine(@PathVariable("id") int id) {
+    machineService.deleteMachine(id);
+    return "redirect:/machines";
+  }
 
 }

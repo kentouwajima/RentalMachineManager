@@ -2,6 +2,7 @@ package RentalMachineManager.repository;
 
 import RentalMachineManager.model.Machine;
 import java.util.List;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
@@ -41,5 +42,8 @@ public interface MachineRepository {
         VALUES (#{name}, #{manufacturer}, #{model}, #{status.id}, #{location.id})
     """)
   void insertMachine(Machine machine);
+
+  @Delete("DELETE FROM machines WHERE id = #{id}")
+  void deleteById(int id);
 
 }
