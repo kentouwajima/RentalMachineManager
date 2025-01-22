@@ -28,52 +28,58 @@ public class MachineController {
     this.machineStatusService = machineStatusService;
   }
 
-  @GetMapping("/machines")
-  public String getAllMachines(Model model) {
-    List<Machine> machines = machineService.getAllMachines();
-    model.addAttribute("machines", machines);
-    return "machine-list";
-  }
+  @GetMapping("/")
+    public String showTopPage(Model model) {
+      // 必要に応じてモデルに属性を追加できます
+      return "index"; // トップページのテンプレート名
+    }
 
-  @GetMapping("/machines/{id}")
-  public String getMachineDetails(@PathVariable("id") int id, Model model) {
-    Machine machine = machineService.getMachineById(id);
-    model.addAttribute("machine", machine);
-    return "machine-details";
-  }
+    @GetMapping("/machines")
+    public String getAllMachines(Model model) {
+      List<Machine> machines = machineService.getAllMachines();
+      model.addAttribute("machines", machines);
+      return "machine-list";
+    }
 
-  @GetMapping("/machines/edit/{id}")
-  public String editMachine(@PathVariable("id") int id, Model model) {
-    Machine machine = machineService.getMachineById(id);
-    model.addAttribute("machine", machine);
-    return "machine-edit";
-  }
+    @GetMapping("/machines/{id}")
+    public String getMachineDetails(@PathVariable("id") int id, Model model) {
+      Machine machine = machineService.getMachineById(id);
+      model.addAttribute("machine", machine);
+      return "machine-details";
+    }
 
-  @GetMapping("/machines/new")
-  public String showNewMachineForm(Model model) {
-    model.addAttribute("statuses", machineStatusService.getAllStatuses());
-    model.addAttribute("locations", locationService.getAllLocations());
-    return "machine-new"; // Thymeleafテンプレートの名前
-  }
+    @GetMapping("/machines/edit/{id}")
+    public String editMachine(@PathVariable("id") int id, Model model) {
+      Machine machine = machineService.getMachineById(id);
+      model.addAttribute("machine", machine);
+      return "machine-edit";
+    }
 
-  @PostMapping("/machines")
-  public String createMachine(
-      @RequestParam("statusId") int statusId,
-      @RequestParam("locationId") int locationId,
-      Machine machine
-  ) {
-    // ステータスと営業所のオブジェクトを作成
-    MachineStatus status = new MachineStatus();
-    status.setId(statusId);
-    machine.setStatus(status);
+    @GetMapping("/machines/new")
+    public String showNewMachineForm(Model model) {
+      model.addAttribute("statuses", machineStatusService.getAllStatuses());
+      model.addAttribute("locations", locationService.getAllLocations());
+      return "machine-new"; // Thymeleafテンプレートの名前
+    }
 
-    Location location = new Location();
-    location.setId(locationId);
-    machine.setLocation(location);
+    @PostMapping("/machines")
+    public String createMachine(
+        @RequestParam("statusId") int statusId,
+        @RequestParam("locationId") int locationId,
+        Machine machine
+    ) {
+      // ステータスと営業所のオブジェクトを作成
+      MachineStatus status = new MachineStatus();
+      status.setId(statusId);
+      machine.setStatus(status);
 
-    // データベースに保存
-    machineService.createMachine(machine);
-    return "redirect:/machines";
-  }
+      Location location = new Location();
+      location.setId(locationId);
+      machine.setLocation(location);
+
+      // データベースに保存
+      machineService.createMachine(machine);
+      return "redirect:/machines";
+    }
 
 }
