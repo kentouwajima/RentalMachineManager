@@ -18,22 +18,25 @@
       border-bottom: 2px solid #dee2e6;
       padding-bottom: 5px;
     }
+
+    .edit-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
   </style>
 </head>
 <body>
 <div class="container mt-5">
   <h1 class="mb-4">機材詳細</h1>
 
-  <!-- 操作ボタン -->
-  <div class="d-flex justify-content-between mb-4">
-    <a href="/machines" class="btn btn-secondary">機材一覧に戻る</a>
-    <a th:href="@{'/machines/edit/' + ${machine.id}}" class="btn btn-warning">編集</a>
-  </div>
-
   <!-- 機材詳細情報 -->
   <div class="card shadow">
     <div class="card-body">
       <h5 class="card-title text-center mb-4" th:text="${machine.name}"></h5>
+
+      <!-- 編集ボタン (枠内に設置) -->
+      <a th:href="@{'/machines/edit/' + ${machine.id}}" class="btn btn-warning edit-btn">編集</a>
 
       <!-- 基本情報セクション -->
       <div class="detail-section">
@@ -71,6 +74,11 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- 操作ボタン -->
+  <div class="d-flex justify-content-between mb-4">
+    <a href="/machines" class="btn btn-secondary">機材一覧に戻る</a>
   </div>
 </div>
 </body>
