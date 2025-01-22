@@ -47,14 +47,37 @@ public class MachineController {
       return "machine-details";
     }
 
-    @GetMapping("/machines/edit/{id}")
-    public String editMachine(@PathVariable("id") int id, Model model) {
-      Machine machine = machineService.getMachineById(id);
-      model.addAttribute("machine", machine);
-      return "machine-edit";
-    }
+  @GetMapping("/machines/edit/{id}")
+  public String editMachine(@PathVariable("id") int id, Model model) {
+    Machine machine = machineService.getMachineById(id);
+    model.addAttribute("machine", machine);
+    model.addAttribute("statuses", machineStatusService.getAllStatuses()); // ステータスを追加
+    model.addAttribute("locations", locationService.getAllLocations()); // 営業所を追加
+    return "machine-edit";
+  }
 
-    @GetMapping("/machines/new")
+  @PostMapping("/machines/edit/{id}")
+  public String updateMachine(
+      @PathVariable("id") int id,
+      @RequestParam("statusId") int statusId,
+      @RequestParam("locationId") int locationId,
+      Machine machine
+  ) {
+    MachineStatus status = new MachineStatus();
+    status.setId(statusId);
+    machine.setStatus(status);
+
+    Location location = new Location();
+    location.setId(locationId);
+    machine.setLocation(location);
+
+    machine.setId(id); // IDを設定
+    machineService.updateMachine(machine); // 更新処理
+    return "redirect:/machines";
+  }
+
+
+  @GetMapping("/machines/new")
     public String showNewMachineForm(Model model) {
       model.addAttribute("statuses", machineStatusService.getAllStatuses());
       model.addAttribute("locations", locationService.getAllLocations());

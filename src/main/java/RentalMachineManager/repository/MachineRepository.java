@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface MachineRepository {
@@ -45,5 +46,14 @@ public interface MachineRepository {
 
   @Delete("DELETE FROM machines WHERE id = #{id}")
   void deleteById(int id);
+
+  @Update("""
+    UPDATE machines
+    SET name = #{name}, manufacturer = #{manufacturer}, model = #{model}, 
+        status_id = #{status.id}, location_id = #{location.id}
+    WHERE id = #{id}
+""")
+  void updateMachine(Machine machine);
+
 
 }
