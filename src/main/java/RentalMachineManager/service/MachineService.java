@@ -23,4 +23,9 @@ public class MachineService {
     return machineRepository.findById(id); // 詳細情報を取得する
   }
 
+  public void createMachine(Machine machine) {
+    machineRepository.insertMachine(machine);
+  }
+
+
 }

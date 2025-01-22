@@ -2,6 +2,7 @@ package RentalMachineManager.repository;
 
 import RentalMachineManager.model.Machine;
 import java.util.List;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
@@ -34,5 +35,11 @@ public interface MachineRepository {
       @Result(property = "location.address", column = "location_address")
   })
   Machine findById(int id);
+
+  @Insert("""
+        INSERT INTO machines (name, manufacturer, model, status_id, location_id)
+        VALUES (#{name}, #{manufacturer}, #{model}, #{status.id}, #{location.id})
+    """)
+  void insertMachine(Machine machine);
 
 }
