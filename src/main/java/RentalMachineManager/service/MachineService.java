@@ -35,5 +35,4 @@ public class MachineService {
     machineRepository.updateMachine(machine); // Repositoryでの更新処理を呼び出す
   }
 
-
 }

@@ -51,8 +51,8 @@ public class MachineController {
   public String editMachine(@PathVariable("id") int id, Model model) {
     Machine machine = machineService.getMachineById(id);
     model.addAttribute("machine", machine);
-    model.addAttribute("statuses", machineStatusService.getAllStatuses()); // ステータスを追加
-    model.addAttribute("locations", locationService.getAllLocations()); // 営業所を追加
+    model.addAttribute("statuses", machineStatusService.getAllStatuses());
+    model.addAttribute("locations", locationService.getAllLocations());
     return "machine-edit";
   }
 
@@ -71,8 +71,8 @@ public class MachineController {
     location.setId(locationId);
     machine.setLocation(location);
 
-    machine.setId(id); // IDを設定
-    machineService.updateMachine(machine); // 更新処理
+    machine.setId(id);
+    machineService.updateMachine(machine);
     return "redirect:/machines";
   }
 
@@ -81,7 +81,7 @@ public class MachineController {
     public String showNewMachineForm(Model model) {
       model.addAttribute("statuses", machineStatusService.getAllStatuses());
       model.addAttribute("locations", locationService.getAllLocations());
-      return "machine-new"; // Thymeleafテンプレートの名前
+      return "machine-new";
     }
 
     @PostMapping("/machines")
