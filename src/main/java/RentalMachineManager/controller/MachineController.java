@@ -17,35 +17,38 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MachineController {
+
   private final MachineService machineService;
   private final LocationService locationService;
   private final MachineStatusService machineStatusService;
 
   @Autowired
-  public MachineController(MachineService machineService,LocationService locationService, MachineStatusService machineStatusService) {
+  public MachineController(MachineService machineService, LocationService locationService, MachineStatusService machineStatusService) {
     this.machineService = machineService;
     this.locationService = locationService;
     this.machineStatusService = machineStatusService;
   }
 
   @GetMapping("/")
-    public String showTopPage(Model model) {
-      return "index";
-    }
+  public String showTopPage(Model model) {
+    List<Location> locations = locationService.getAllLocations();
+    model.addAttribute("locations", locations);
+    return "index";
+  }
 
-    @GetMapping("/machines")
-    public String getAllMachines(Model model) {
-      List<Machine> machines = machineService.getAllMachines();
-      model.addAttribute("machines", machines);
-      return "machine-list";
-    }
+  @GetMapping("/machines")
+  public String getAllMachines(Model model) {
+    List<Machine> machines = machineService.getAllMachines();
+    model.addAttribute("machines", machines);
+    return "machine-list";
+  }
 
-    @GetMapping("/machines/{id}")
-    public String getMachineDetails(@PathVariable("id") int id, Model model) {
-      Machine machine = machineService.getMachineById(id);
-      model.addAttribute("machine", machine);
-      return "machine-details";
-    }
+  @GetMapping("/machines/{id}")
+  public String getMachineDetails(@PathVariable("id") int id, Model model) {
+    Machine machine = machineService.getMachineById(id);
+    model.addAttribute("machine", machine);
+    return "machine-details";
+  }
 
   @GetMapping("/machines/edit/{id}")
   public String editMachine(@PathVariable("id") int id, Model model) {
@@ -76,36 +79,34 @@ public class MachineController {
     return "redirect:/machines";
   }
 
-
   @GetMapping("/machines/new")
-    public String showNewMachineForm(Model model) {
-      model.addAttribute("statuses", machineStatusService.getAllStatuses());
-      model.addAttribute("locations", locationService.getAllLocations());
-      return "machine-new";
-    }
+  public String showNewMachineForm(Model model) {
+    model.addAttribute("statuses", machineStatusService.getAllStatuses());
+    model.addAttribute("locations", locationService.getAllLocations());
+    return "machine-new";
+  }
 
-    @PostMapping("/machines")
-    public String createMachine(
-        @RequestParam("statusId") int statusId,
-        @RequestParam("locationId") int locationId,
-        Machine machine
-    ) {
-      MachineStatus status = new MachineStatus();
-      status.setId(statusId);
-      machine.setStatus(status);
+  @PostMapping("/machines")
+  public String createMachine(
+      @RequestParam("statusId") int statusId,
+      @RequestParam("locationId") int locationId,
+      Machine machine
+  ) {
+    MachineStatus status = new MachineStatus();
+    status.setId(statusId);
+    machine.setStatus(status);
 
-      Location location = new Location();
-      location.setId(locationId);
-      machine.setLocation(location);
+    Location location = new Location();
+    location.setId(locationId);
+    machine.setLocation(location);
 
-      machineService.createMachine(machine);
-      return "redirect:/machines";
-    }
+    machineService.createMachine(machine);
+    return "redirect:/machines";
+  }
 
   @PostMapping("/machines/delete/{id}")
   public String deleteMachine(@PathVariable("id") int id) {
     machineService.deleteMachine(id);
     return "redirect:/machines";
   }
-
 }
