@@ -31,8 +31,6 @@ public class MachineController {
 
   @GetMapping("/")
   public String showTopPage(Model model) {
-    List<Location> locations = locationService.getAllLocations();
-    model.addAttribute("locations", locations);
     return "index";
   }
 
@@ -40,6 +38,8 @@ public class MachineController {
   public String getAllMachines(Model model) {
     List<Machine> machines = machineService.getAllMachines();
     model.addAttribute("machines", machines);
+    List<Location> locations = locationService.getAllLocations();
+    model.addAttribute("locations", locations);
     return "machine-list";
   }
 
@@ -109,4 +109,5 @@ public class MachineController {
     machineService.deleteMachine(id);
     return "redirect:/machines";
   }
+
 }
