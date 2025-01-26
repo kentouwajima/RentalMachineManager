@@ -29,11 +29,13 @@ public class MachineController {
     this.machineStatusService = machineStatusService;
   }
 
+  // トップページの表示
   @GetMapping("/")
   public String showTopPage(Model model) {
     return "index";
   }
 
+  // 全ての機材一覧を取得して表示
   @GetMapping("/machines")
   public String getAllMachines(Model model) {
     List<Machine> machines = machineService.getAllMachines();
@@ -43,6 +45,7 @@ public class MachineController {
     return "machine-list";
   }
 
+  // 機材詳細の表示
   @GetMapping("/machines/{id}")
   public String getMachineDetails(@PathVariable("id") int id, Model model) {
     Machine machine = machineService.getMachineById(id);
@@ -50,6 +53,34 @@ public class MachineController {
     return "machine-details";
   }
 
+  // 新規機材登録フォームの表示
+  @GetMapping("/machines/new")
+  public String showNewMachineForm(Model model) {
+    model.addAttribute("statuses", machineStatusService.getAllStatuses());
+    model.addAttribute("locations", locationService.getAllLocations());
+    return "machine-new";
+  }
+
+  // 新規機材の登録処理
+  @PostMapping("/machines")
+  public String createMachine(
+      @RequestParam("statusId") int statusId,
+      @RequestParam("locationId") int locationId,
+      Machine machine
+  ) {
+    MachineStatus status = new MachineStatus();
+    status.setId(statusId);
+    machine.setStatus(status);
+
+    Location location = new Location();
+    location.setId(locationId);
+    machine.setLocation(location);
+
+    machineService.createMachine(machine);
+    return "redirect:/machines";
+  }
+
+  // 機材編集ページの表示
   @GetMapping("/machines/edit/{id}")
   public String editMachine(@PathVariable("id") int id, Model model) {
     Machine machine = machineService.getMachineById(id);
@@ -59,6 +90,7 @@ public class MachineController {
     return "machine-edit";
   }
 
+  // 機材情報の更新処理
   @PostMapping("/machines/edit/{id}")
   public String updateMachine(
       @PathVariable("id") int id,
@@ -79,31 +111,7 @@ public class MachineController {
     return "redirect:/machines";
   }
 
-  @GetMapping("/machines/new")
-  public String showNewMachineForm(Model model) {
-    model.addAttribute("statuses", machineStatusService.getAllStatuses());
-    model.addAttribute("locations", locationService.getAllLocations());
-    return "machine-new";
-  }
-
-  @PostMapping("/machines")
-  public String createMachine(
-      @RequestParam("statusId") int statusId,
-      @RequestParam("locationId") int locationId,
-      Machine machine
-  ) {
-    MachineStatus status = new MachineStatus();
-    status.setId(statusId);
-    machine.setStatus(status);
-
-    Location location = new Location();
-    location.setId(locationId);
-    machine.setLocation(location);
-
-    machineService.createMachine(machine);
-    return "redirect:/machines";
-  }
-
+  // 機材削除処理
   @PostMapping("/machines/delete/{id}")
   public String deleteMachine(@PathVariable("id") int id) {
     machineService.deleteMachine(id);
