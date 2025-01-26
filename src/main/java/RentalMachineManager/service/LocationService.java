@@ -7,14 +7,18 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LocationService {
+
+  // LocationRepositoryのインスタンスを注入
   private final LocationRepository locationRepository;
 
+  // コンストラクタでLocationRepositoryを受け取り、フィールドにセット
   public LocationService(LocationRepository locationRepository) {
     this.locationRepository = locationRepository;
   }
 
+  // 全ての営業所情報を取得するメソッド
   public List<Location> getAllLocations() {
-    return locationRepository.findAll();
+    return locationRepository.findAll(); // LocationRepositoryから営業所のデータを取得
   }
 
 }
