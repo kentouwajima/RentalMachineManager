@@ -12,9 +12,12 @@ import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface MachineRepository {
-  @Select("SELECT * FROM machines")
-  List<Machine> findAll();
 
+  // 全ての機材情報を取得
+  @Select("SELECT * FROM machines")
+  List<Machine> findAll(); // 機材一覧を取得
+
+  // 機材IDを指定して詳細情報を取得
   @Select("""
       SELECT 
         m.id AS machine_id, m.name AS machine_name, m.manufacturer, m.model,
@@ -36,23 +39,25 @@ public interface MachineRepository {
       @Result(property = "location.name", column = "location_name"),
       @Result(property = "location.address", column = "location_address")
   })
-  Machine findById(int id);
+  Machine findById(int id); // 機材IDに基づき詳細情報を取得
 
+  // 新規機材をデータベースに挿入
   @Insert("""
         INSERT INTO machines (name, manufacturer, model, status_id, location_id)
         VALUES (#{name}, #{manufacturer}, #{model}, #{status.id}, #{location.id})
     """)
-  void insertMachine(Machine machine);
+  void insertMachine(Machine machine); // 新規機材を追加する
 
-  @Delete("DELETE FROM machines WHERE id = #{id}")
-  void deleteById(int id);
-
+  // 機材情報を更新
   @Update("""
     UPDATE machines
     SET name = #{name}, manufacturer = #{manufacturer}, model = #{model}, 
         status_id = #{status.id}, location_id = #{location.id}
     WHERE id = #{id}
 """)
-  void updateMachine(Machine machine);
+  void updateMachine(Machine machine); // 機材情報の更新処理
 
+  // 機材をIDで削除
+  @Delete("DELETE FROM machines WHERE id = #{id}")
+  void deleteById(int id); // 機材を削除する
 }

@@ -40,5 +40,5 @@ public class MachineService {
   public void deleteMachine(int id) {
     machineRepository.deleteById(id); // 機材を削除する
   }
-  
+
 }
