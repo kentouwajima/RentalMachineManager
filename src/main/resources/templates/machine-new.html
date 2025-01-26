@@ -32,7 +32,7 @@
   <!-- 登録フォーム -->
   <div class="card shadow">
     <div class="card-body">
-      <form th:action="@{/machines}" th:method="post">
+      <form th:action="@{/machines}" th:method="post" onsubmit="return confirmRegistration()">
         <!-- 基本情報セクション -->
         <div class="form-section">
           <h6 class="section-title">基本情報</h6>
@@ -82,5 +82,13 @@
     </div>
   </div>
 </div>
+
+<script>
+  // 登録前確認ダイアログを表示する関数
+  function confirmRegistration() {
+    return confirm("この内容で登録しますか？");
+  }
+</script>
+
 </body>
 </html>
