@@ -66,6 +66,13 @@ public class MachineController {
     List<Machine> machines = machineService.searchMachines(name, manufacturer, modelParam, status, location);  // model -> modelParam
     model.addAttribute("machines", machines);  // 検索結果をビューに渡す
 
+    // 検索条件をフォームに保持
+    model.addAttribute("name", name);
+    model.addAttribute("manufacturer", manufacturer);
+    model.addAttribute("modelParam", modelParam);
+    model.addAttribute("statusParam", status);
+    model.addAttribute("locationParam", location);
+
     return "machine-list";  // 検索結果を表示するビューに遷移
   }
 
