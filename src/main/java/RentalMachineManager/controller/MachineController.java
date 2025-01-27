@@ -38,10 +38,12 @@ public class MachineController {
   // 全ての機材一覧を取得して表示
   @GetMapping("/machines")
   public String getAllMachines(Model model) {
+    List<MachineStatus> statuses = machineStatusService.getAllStatuses();  // ステータスを取得
+    List<Location> locations = locationService.getAllLocations();  // 営業所を取得
+    model.addAttribute("statuses", statuses);  // ステータスの一覧をビューに渡す
+    model.addAttribute("locations", locations);  // 営業所の一覧をビューに渡す
     List<Machine> machines = machineService.getAllMachines();
     model.addAttribute("machines", machines);
-    List<Location> locations = locationService.getAllLocations();
-    model.addAttribute("locations", locations);
     return "machine-list";
   }
 
