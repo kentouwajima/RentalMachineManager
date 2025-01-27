@@ -47,6 +47,28 @@ public class MachineController {
     return "machine-list";
   }
 
+  // 検索結果の表示
+  @GetMapping("/machines/search")
+  public String searchMachines(
+      @RequestParam(required = false) String name,
+      @RequestParam(required = false) String manufacturer,
+      @RequestParam(required = false) String modelParam,  // model -> modelParam
+      @RequestParam(required = false) Integer status,
+      @RequestParam(required = false) Integer location,
+      Model model
+  ) {
+    List<MachineStatus> statuses = machineStatusService.getAllStatuses();  // ステータスを取得
+    List<Location> locations = locationService.getAllLocations();  // 営業所を取得
+    model.addAttribute("statuses", statuses);  // ステータスの一覧をビューに渡す
+    model.addAttribute("locations", locations);  // 営業所の一覧をビューに渡す
+
+    // 検索条件を満たす機材を取得
+    List<Machine> machines = machineService.searchMachines(name, manufacturer, modelParam, status, location);  // model -> modelParam
+    model.addAttribute("machines", machines);  // 検索結果をビューに渡す
+
+    return "machine-list";  // 検索結果を表示するビューに遷移
+  }
+
   // 機材詳細の表示
   @GetMapping("/machines/{id}")
   public String getMachineDetails(@PathVariable("id") int id, Model model) {

@@ -21,6 +21,10 @@ public class MachineService {
     return machineRepository.findAll(); // 機材一覧を取得する
   }
 
+  public List<Machine> searchMachines(String name, String manufacturer, String modelParam, Integer status, Integer location) {
+    return machineRepository.searchMachines(name, manufacturer, modelParam, status, location);
+  }
+
   // 機材IDを指定して詳細情報を取得
   public Machine getMachineById(int id) {
     return machineRepository.findById(id); // 詳細情報を取得する
