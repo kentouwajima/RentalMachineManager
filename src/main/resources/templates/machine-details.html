@@ -10,6 +10,7 @@
       padding: 20px;
       margin-bottom: 20px;
       background-color: #f8f9fa;
+      position: relative;
     }
 
     .section-title {
@@ -19,10 +20,10 @@
       padding-bottom: 5px;
     }
 
-    .edit-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
+    .action-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -34,9 +35,6 @@
   <div class="card shadow">
     <div class="card-body">
       <h5 class="card-title text-center mb-4" th:text="${machine.name}"></h5>
-
-      <!-- 編集ボタン (枠内に設置) -->
-      <a th:href="@{'/machines/edit/' + ${machine.id}}" class="btn btn-warning edit-btn">編集</a>
 
       <!-- 基本情報セクション -->
       <div class="detail-section">
@@ -73,12 +71,13 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- 操作ボタン -->
-  <div class="d-flex justify-content-between mb-4">
-    <a href="/machines" class="btn btn-secondary">機材一覧に戻る</a>
+      <!-- 操作ボタン（位置を逆にした） -->
+      <div class="action-buttons">
+        <a href="/machines" class="btn btn-secondary">機材一覧に戻る</a>
+        <a th:href="@{'/machines/edit/' + ${machine.id}}" class="btn btn-warning">編集</a>
+      </div>
+    </div>
   </div>
 </div>
 </body>
