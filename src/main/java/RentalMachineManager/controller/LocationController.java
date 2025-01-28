@@ -25,7 +25,7 @@ public class LocationController {
   // 営業所登録フォームの表示
   @GetMapping("/locations/register")
   public String showRegisterForm() {
-    return "location-register";
+    return "location-new";
   }
 
   // 営業所登録の処理
