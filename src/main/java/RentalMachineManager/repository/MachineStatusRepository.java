@@ -10,6 +10,6 @@ public interface MachineStatusRepository {
 
   // machine_statusesテーブルから全ての機材のステータスデータを取得
   @Select("SELECT * FROM machine_statuses")
-  List<MachineStatus> findAll();
+  List<MachineStatus> findAll(); // 全ステータスデータを取得
 
 }

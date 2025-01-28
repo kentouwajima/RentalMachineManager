@@ -29,6 +29,7 @@ public interface MachineRepository {
       WHERE m.id = #{id}
       """)
   @Results({
+      // データベースの列名をエンティティのプロパティにマッピング
       @Result(property = "id", column = "machine_id"),
       @Result(property = "name", column = "machine_name"),
       @Result(property = "manufacturer", column = "manufacturer"),
@@ -61,6 +62,7 @@ public interface MachineRepository {
   @Delete("DELETE FROM machines WHERE id = #{id}")
   void deleteById(int id); // 機材を削除する
 
+  // 検索条件に基づき機材情報を取得
   @Select("""
     SELECT 
         m.id AS machine_id, m.name AS machine_name, m.manufacturer, m.model,
@@ -77,6 +79,7 @@ public interface MachineRepository {
         AND (#{location} IS NULL OR m.location_id = #{location})
 """)
   @Results({
+      // データベースの列名をエンティティのプロパティにマッピング
       @Result(property = "id", column = "machine_id"),
       @Result(property = "name", column = "machine_name"),
       @Result(property = "manufacturer", column = "manufacturer"),
@@ -87,6 +90,6 @@ public interface MachineRepository {
       @Result(property = "location.name", column = "location_name"),
       @Result(property = "location.address", column = "location_address")
   })
-  List<Machine> searchMachines(String name, String manufacturer, String model, Integer status, Integer location);
+  List<Machine> searchMachines(String name, String manufacturer, String model, Integer status, Integer location); // 検索条件に基づき機材を取得
 
 }
