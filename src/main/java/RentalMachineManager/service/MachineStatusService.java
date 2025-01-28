@@ -13,12 +13,12 @@ public class MachineStatusService {
 
   // コンストラクタでMachineStatusRepositoryを受け取り、フィールドにセット
   public MachineStatusService(MachineStatusRepository machineStatusRepository) {
-    this.machineStatusRepository = machineStatusRepository;
+    this.machineStatusRepository = machineStatusRepository; // インスタンスを初期化
   }
 
   // すべての機材ステータス情報を取得するメソッド
   public List<MachineStatus> getAllStatuses() {
-    return machineStatusRepository.findAll(); // MachineStatusRepositoryから機材ステータスのデータを取得
+    return machineStatusRepository.findAll(); // MachineStatusRepositoryから機材ステータスのデータを取得して返却
   }
 
 }
