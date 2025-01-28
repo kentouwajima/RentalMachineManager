@@ -2,7 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>機材一覧</title>
+  <!-- BootstrapのCSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- Bootstrap IconsのCSS（アイコン用） -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <style>
     /* テーブルのヘッダーに背景色を追加 */
@@ -53,20 +55,23 @@
       background-color: #ffffff;
     }
 
+    /* 検索フォームのスタイル */
     .search-container {
       margin-bottom: 20px;
       padding: 15px;
-      border: 1px solid #ccc;  /* 落ち着いたグレーの枠線 */
-      border-radius: 8px;  /* 角を丸める */
-      background-color: #fafafa;  /* 背景色 */
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #fafafa;
     }
 
+    /* フォームのレイアウト */
     .form-row {
       display: flex;
       justify-content: space-between;
       gap: 10px;
     }
 
+    /* フォームの各要素のスタイル */
     .form-group {
       flex: 1;
       min-width: 200px;
@@ -76,6 +81,7 @@
       border-radius: 5px;
     }
 
+    /* 検索ボタンのスタイル */
     .btn-search {
       background-color: #28a745;
       color: #fff;
@@ -93,8 +99,10 @@
 </head>
 <body>
 <div class="container mt-5">
+  <!-- ページタイトル -->
   <h1 class="mb-4">機材一覧</h1>
 
+  <!-- トップページへの戻るリンク -->
   <div class="d-flex justify-content-start mb-4">
     <a href="/" class="btn btn-primary mb-3">
       <!-- 家のアイコンを追加 -->
@@ -105,55 +113,55 @@
   <!-- 検索ボックス -->
   <div class="search-container">
     <form action="/machines/search" method="get">
+      <!-- 検索項目の入力フィールド -->
       <div class="form-row">
         <div class="form-group">
           <label for="name" class="form-label">機材名</label>
-          <input type="text" id="name" name="name" class="form-control" placeholder="例: ユンボ"
-                 th:value="${name}">
+          <input type="text" id="name" name="name" class="form-control" placeholder="例: ユンボ" th:value="${name}">
         </div>
         <div class="form-group">
           <label for="manufacturer" class="form-label">メーカー</label>
-          <input type="text" id="manufacturer" name="manufacturer" class="form-control" placeholder="例: 日立建機"
-                 th:value="${manufacturer}">
+          <input type="text" id="manufacturer" name="manufacturer" class="form-control" placeholder="例: 日立建機" th:value="${manufacturer}">
         </div>
         <div class="form-group">
           <label for="model" class="form-label">型式</label>
-          <input type="text" id="model" name="modelParam" class="form-control" placeholder="例: ZX200-5G"
-                 th:value="${modelParam}">
+          <input type="text" id="model" name="modelParam" class="form-control" placeholder="例: ZX200-5G" th:value="${modelParam}">
         </div>
       </div>
 
+      <!-- ステータスと営業所名の選択肢 -->
       <div class="form-row mt-3">
         <div class="form-group">
           <label for="status" class="form-label">ステータス</label>
           <select id="status" name="status" class="form-select">
             <option value="">全て</option>
-            <option th:each="status : ${statuses}" th:value="${status.id}" th:text="${status.status}"
-                    th:selected="${status.id == statusParam}"></option>
+            <!-- ステータス選択肢を動的に表示 -->
+            <option th:each="status : ${statuses}" th:value="${status.id}" th:text="${status.status}" th:selected="${status.id == statusParam}"></option>
           </select>
         </div>
         <div class="form-group">
           <label for="location" class="form-label">営業所名</label>
           <select id="location" name="location" class="form-select">
             <option value="">全て</option>
-            <option th:each="location : ${locations}" th:value="${location.id}" th:text="${location.name}"
-                    th:selected="${location.id == locationParam}"></option>
+            <!-- 営業所名選択肢を動的に表示 -->
+            <option th:each="location : ${locations}" th:value="${location.id}" th:text="${location.name}" th:selected="${location.id == locationParam}"></option>
           </select>
         </div>
       </div>
 
+      <!-- 検索ボタン -->
       <div class="form-row mt-3 d-flex justify-content-center">
         <button type="submit" class="btn btn-search">検索</button>
       </div>
     </form>
   </div>
 
-  <!-- 操作ボタンを枠外に配置 -->
+  <!-- すべての機材一覧リンク -->
   <div class="d-flex justify-content-between mb-3">
     <a href="/machines" class="btn btn-secondary">すべての機材一覧</a>
   </div>
 
-  <!-- 機材一覧をカード枠で囲む -->
+  <!-- 機材一覧テーブル -->
   <div class="card shadow">
     <div class="card-body">
       <table class="table table-striped">
@@ -166,12 +174,15 @@
         </tr>
         </thead>
         <tbody>
+        <!-- 機材情報をリストとして表示 -->
         <tr th:each="machine : ${machines}">
           <td th:text="${machine.name}"></td>
           <td th:text="${machine.manufacturer}"></td>
           <td th:text="${machine.model}"></td>
           <td class="action-buttons">
+            <!-- 機材の詳細ページへのリンク -->
             <a th:href="@{'/machines/' + ${machine.id}}" class="btn btn-info btn-sm">詳細</a>
+            <!-- 機材削除ボタン -->
             <form th:action="@{'/machines/delete/' + ${machine.id}}" method="post" style="display:inline;">
               <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('本当に削除しますか？');">削除</button>
             </form>

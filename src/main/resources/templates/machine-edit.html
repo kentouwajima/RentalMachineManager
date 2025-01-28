@@ -2,8 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>機材編集</title>
+  <!-- BootstrapのCSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
+    /* 編集セクションのスタイル */
     .edit-section {
       border: 1px solid #dee2e6;
       border-radius: 8px;
@@ -12,6 +14,7 @@
       background-color: #f8f9fa;
     }
 
+    /* セクションタイトルのスタイル */
     .section-title {
       font-weight: bold;
       margin-bottom: 15px;
@@ -19,6 +22,7 @@
       padding-bottom: 5px;
     }
 
+    /* 更新ボタンの位置調整 */
     .confirm-btn {
       position: absolute;
       top: 20px;
@@ -34,30 +38,34 @@
 </head>
 <body>
 <div class="container mt-5">
+  <!-- ページタイトル -->
   <h1 class="mb-4">機材編集</h1>
 
   <!-- 編集フォーム -->
   <div class="card shadow">
     <div class="card-body">
 
+      <!-- 機材名表示 -->
       <h5 class="text-center mb-4" th:text="${machine.name}"></h5>
 
-      <!-- 編集フォーム -->
+      <!-- 編集フォームの開始 -->
       <form th:action="@{'/machines/edit/' + ${machine.id}}" th:method="post" onsubmit="return confirmUpdate()">
 
         <!-- 基本情報セクション -->
         <div class="edit-section">
           <h6 class="section-title">基本情報</h6>
           <div class="row">
+            <!-- 機材名入力フィールド -->
             <div class="col-md-6">
               <label for="name" class="form-label">機材名</label>
               <input type="text" class="form-control" id="name" name="name" th:value="${machine.name}" required>
             </div>
+            <!-- メーカー入力フィールド -->
             <div class="col-md-6">
               <label for="manufacturer" class="form-label">メーカー</label>
               <input type="text" class="form-control" id="manufacturer" name="manufacturer" th:value="${machine.manufacturer}" required>
             </div>
-            <!-- 型式入力フィールドの追加 -->
+            <!-- 型式入力フィールド -->
             <div class="col-md-6 mt-3">
               <label for="model" class="form-label">型式</label>
               <input type="text" class="form-control" id="model" name="model" th:value="${machine.model}" required>
@@ -69,9 +77,11 @@
         <div class="edit-section">
           <h6 class="section-title">ステータス情報</h6>
           <div class="row">
+            <!-- ステータス選択ドロップダウン -->
             <div class="col-md-6">
               <label for="statusId" class="form-label">ステータス</label>
               <select class="form-select" id="statusId" name="statusId" required>
+                <!-- ステータスのオプション（サーバーサイドから取得） -->
                 <option th:each="status : ${statuses}" th:value="${status.id}" th:text="${status.status}"
                         th:selected="${machine.status.id == status.id}"></option>
               </select>
@@ -83,9 +93,11 @@
         <div class="edit-section">
           <h6 class="section-title">営業所情報</h6>
           <div class="row">
+            <!-- 営業所選択ドロップダウン -->
             <div class="col-md-6">
               <label for="locationId" class="form-label">営業所</label>
               <select class="form-select" id="locationId" name="locationId" required>
+                <!-- 営業所のオプション（サーバーサイドから取得） -->
                 <option th:each="location : ${locations}" th:value="${location.id}" th:text="${location.name}"
                         th:selected="${machine.location.id == location.id}"></option>
               </select>
@@ -93,8 +105,11 @@
           </div>
         </div>
 
+        <!-- フォーム送信ボタン（更新）とキャンセルボタン -->
         <div class="d-flex justify-content-between">
+          <!-- 更新ボタン -->
           <button type="submit" class="btn btn-primary">更新</button>
+          <!-- キャンセルボタン -->
           <a href="/machines" class="btn btn-secondary">キャンセル</a>
         </div>
       </form>

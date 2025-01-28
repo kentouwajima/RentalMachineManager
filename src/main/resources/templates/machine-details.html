@@ -2,8 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>機材詳細</title>
+  <!-- BootstrapのCSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
+    /* 機材詳細セクションのスタイル */
     .detail-section {
       border: 1px solid #dee2e6;
       border-radius: 8px;
@@ -13,6 +15,7 @@
       position: relative;
     }
 
+    /* セクションタイトルのスタイル */
     .section-title {
       font-weight: bold;
       margin-bottom: 15px;
@@ -20,6 +23,7 @@
       padding-bottom: 5px;
     }
 
+    /* 操作ボタン（戻るボタンと編集ボタン）用のレイアウト */
     .action-buttons {
       display: flex;
       justify-content: space-between;
@@ -29,20 +33,24 @@
 </head>
 <body>
 <div class="container mt-5">
+  <!-- ページタイトル -->
   <h1 class="mb-4">機材詳細</h1>
 
   <!-- 機材詳細情報 -->
   <div class="card shadow">
     <div class="card-body">
+      <!-- 機材名 -->
       <h5 class="card-title text-center mb-4" th:text="${machine.name}"></h5>
 
       <!-- 基本情報セクション -->
       <div class="detail-section">
         <h6 class="section-title">基本情報</h6>
         <div class="row">
+          <!-- メーカー情報 -->
           <div class="col-md-6">
             <p><strong>メーカー:</strong> <span th:text="${machine.manufacturer}"></span></p>
           </div>
+          <!-- 型式情報 -->
           <div class="col-md-6">
             <p><strong>型式:</strong> <span th:text="${machine.model}"></span></p>
           </div>
@@ -53,6 +61,7 @@
       <div class="detail-section">
         <h6 class="section-title">ステータス情報</h6>
         <div class="row">
+          <!-- 現在のステータス -->
           <div class="col-md-6">
             <p><strong>現在のステータス:</strong> <span th:text="${machine.status.status}"></span></p>
           </div>
@@ -63,18 +72,22 @@
       <div class="detail-section">
         <h6 class="section-title">営業所情報</h6>
         <div class="row">
+          <!-- 営業所名 -->
           <div class="col-md-6">
             <p><strong>営業所名:</strong> <span th:text="${machine.location.name}"></span></p>
           </div>
+          <!-- 営業所住所 -->
           <div class="col-md-6">
             <p><strong>住所:</strong> <span th:text="${machine.location.address}"></span></p>
           </div>
         </div>
       </div>
 
-      <!-- 操作ボタン（位置を逆にした） -->
+      <!-- 操作ボタン（機材一覧に戻るボタンと編集ボタン） -->
       <div class="action-buttons">
+        <!-- 機材一覧に戻るボタン -->
         <a href="/machines" class="btn btn-secondary">機材一覧に戻る</a>
+        <!-- 機材編集ページへのリンク -->
         <a th:href="@{'/machines/edit/' + ${machine.id}}" class="btn btn-warning">編集</a>
       </div>
     </div>

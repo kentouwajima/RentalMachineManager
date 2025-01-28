@@ -4,8 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>トップページ | レンタル重機管理システム</title>
+
+  <!-- BootstrapのCSSを読み込む -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
+    /* 背景画像とページ全体のレイアウト */
     body {
         background-image: url('/images/31314574_l.jpg');
         background-size: cover;
@@ -20,18 +24,20 @@
         font-family: Arial, sans-serif;
     }
 
+    /* オーバーレイ（背景にかかる半透明の黒） */
     .overlay {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.4); /* オーバーレイの透明度を変更 */
+        background-color: rgba(0, 0, 0, 0.4); /* 透明度を調整 */
     }
 
+    /* コンテンツボックスのスタイル（白背景の透明度とシャドウ） */
     .content-box {
         position: relative;
-        background-color: rgba(255, 255, 255, 0.9); /* コンテンツボックスの透明度を変更 */
+        background-color: rgba(255, 255, 255, 0.9); /* 透明度調整 */
         padding: 40px;
         border-radius: 15px;
         text-align: center;
@@ -42,8 +48,9 @@
         margin-bottom: 30px;
     }
 
+    /* メインボタンのスタイル（青色のグラデーション） */
     .btn-main {
-        background: linear-gradient(45deg, #007bff, #0056b3); /* グラデーションを追加 */
+        background: linear-gradient(45deg, #007bff, #0056b3);
         color: #fff;
         border: none;
         padding: 14px 30px;
@@ -52,13 +59,15 @@
         transition: transform 0.3s ease, background 0.3s ease;
     }
 
+    /* メインボタンのホバー時の動作 */
     .btn-main:hover {
-        transform: scale(1.05); /* ホバー時に拡大 */
+        transform: scale(1.05); /* 拡大効果 */
         background: linear-gradient(45deg, #0056b3, #007bff);
     }
 
+    /* 機材登録ボタンのスタイル（緑色のグラデーション） */
     .btn-register {
-        background: linear-gradient(45deg, #28a745, #218838); /* グラデーション */
+        background: linear-gradient(45deg, #28a745, #218838);
         color: #fff;
         border: none;
         padding: 14px 30px;
@@ -67,13 +76,15 @@
         transition: transform 0.3s ease, background 0.3s ease;
     }
 
+    /* 機材登録ボタンのホバー時の動作 */
     .btn-register:hover {
-        transform: scale(1.05); /* ホバー時に拡大 */
+        transform: scale(1.05); /* 拡大効果 */
         background: linear-gradient(45deg, #218838, #28a745);
     }
 
+    /* 営業所登録ボタンのスタイル（黄色のグラデーション） */
     .btn-location {
-        background: linear-gradient(45deg, #ffc107, #e0a800); /* グラデーション */
+        background: linear-gradient(45deg, #ffc107, #e0a800);
         color: #fff;
         border: none;
         padding: 14px 30px;
@@ -82,51 +93,60 @@
         transition: transform 0.3s ease, background 0.3s ease;
     }
 
+    /* 営業所登録ボタンのホバー時の動作 */
     .btn-location:hover {
-        transform: scale(1.05); /* ホバー時に拡大 */
+        transform: scale(1.05); /* 拡大効果 */
         background: linear-gradient(45deg, #e0a800, #ffc107);
     }
 
+    /* ヘッダータイトルのスタイル */
     .header-title {
-        font-size: 32px; /* フォントサイズを大きく */
+        font-size: 32px;
         font-weight: bold;
         color: #333;
         margin-bottom: 20px;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* テキストにシャドウを追加 */
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* シャドウを追加 */
     }
 
+    /* サブテキストのスタイル */
     .subtext {
         font-size: 18px;
         color: #555;
         margin-bottom: 30px;
     }
 
+    /* ボタングループの間隔調整 */
     .button-group {
         margin-top: 20px;
     }
 
+    /* アイコン付きボタンの右側マージン調整 */
     .icon-btn {
         margin-right: 10px;
     }
   </style>
 </head>
 <body>
-<!-- オーバーレイ -->
+
+<!-- オーバーレイ（背景に半透明の黒を重ねる） -->
 <div class="overlay"></div>
 
-<!-- 「ゲストログインはこちら」ボックス -->
+<!-- コンテンツボックス（フォームエリア） -->
 <div class="content-box">
+  <!-- ヘッダータイトル -->
   <h1 class="header-title">レンタル重機管理システム</h1>
+
+  <!-- サブテキスト -->
   <p class="subtext">一元管理で現場の業務を最適化！</p>
 
-  <!-- 上部の「機材情報はこちら」ボタン -->
+  <!-- 機材情報リンクボタン -->
   <div class="mb-3">
     <a href="/machines" class="btn btn-main">
       <i class="bi bi-gear icon-btn"></i>機材情報はこちらから
     </a>
   </div>
 
-  <!-- 下部の「機材登録」と「営業所登録」ボタン -->
+  <!-- 機材登録と営業所登録ボタン -->
   <div class="button-group d-flex justify-content-center gap-3">
     <a href="/machines/new" class="btn btn-register">
       <i class="bi bi-plus icon-btn"></i>機材登録
@@ -139,5 +159,6 @@
 
 <!-- Bootstrap アイコンセット（アイコン追加用）-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.min.js"></script>
+
 </body>
 </html>
