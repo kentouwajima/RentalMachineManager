@@ -68,6 +68,10 @@
         color: #555555;
         margin-bottom: 30px;
     }
+
+    .button-group {
+        margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -78,9 +82,16 @@
 <div class="content-box">
   <h1 class="header-title">レンタル重機管理システム</h1>
   <p class="subtext">一元管理で現場の業務を最適化！</p>
-  <div class="d-flex justify-content-center gap-3">
+
+  <!-- 上部の「機材情報はこちら」ボタン -->
+  <div class="mb-3">
     <a href="/machines" class="btn btn-custom">機材情報はこちらから</a>
+  </div>
+
+  <!-- 下部の「機材登録」と「営業所登録」ボタン -->
+  <div class="button-group d-flex justify-content-center gap-3">
     <a href="/machines/new" class="btn btn-custom">機材登録</a>
+    <a href="/locations/register" class="btn btn-custom">営業所登録</a>
   </div>
 </div>
 </body>

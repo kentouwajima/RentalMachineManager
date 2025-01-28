@@ -21,4 +21,16 @@ public class LocationService {
     return locationRepository.findAll(); // LocationRepositoryから営業所のデータを取得
   }
 
+  public void saveLocation(Location location) {
+    locationRepository.insertLocation(location);
+  }
+
+  public Location getLocationById(Long id) {
+    return locationRepository.findById(id);
+  }
+
+  public void updateLocation(Location location) {
+    locationRepository.updateLocation(location);
+  }
+
 }

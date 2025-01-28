@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>営業所一覧</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    .list-section {
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 20px;
+      background-color: #f8f9fa;
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+  <h1 class="mb-4">営業所一覧</h1>
+
+  <!-- 営業所一覧セクション -->
+  <div class="list-section shadow">
+    <a href="/" class="btn btn-primary mb-3">
+      <!-- 家アイコンを追加 -->
+      <i class="bi bi-house-door"></i> トップページに戻る
+    </a>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>営業所名</th>
+        <th>住所</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="location : ${locations}">
+        <td th:text="${location.name}"></td>
+        <td th:text="${location.address}"></td>
+        <td>
+          <a th:href="@{/locations/edit/{id}(id=${location.id})}" class="btn btn-sm btn-warning">編集</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>
