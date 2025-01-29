@@ -1,4 +1,3 @@
--- machinesテーブルにデータ挿入
 INSERT INTO machines (id, name, manufacturer, model, status_id, location_id) VALUES
 (11, 'バックホー', 'コマツ', 'PC200', 1, 2),
 (12, 'ブルドーザー', 'キャタピラー', 'D6', 2, 1),
@@ -41,7 +40,6 @@ INSERT INTO machines (id, name, manufacturer, model, status_id, location_id) VAL
 (64, 'クローラー運搬車', 'クボタ', 'KC80', 2, 1),
 (68, 'テスト', 'テスト', 'テスト', 1, 5);
 
--- locationsテーブルにデータ挿入
 INSERT INTO locations (id, name, address) VALUES
 (1, '大阪営業所', '大阪府大阪市北区梅田2丁目'),
 (2, '京都営業所', '京都府京都市中京区三条通'),
@@ -49,7 +47,6 @@ INSERT INTO locations (id, name, address) VALUES
 (4, '堺営業所', '大阪府堺市堺区戎島町4丁目'),
 (5, '滋賀営業所', '滋賀県大津市打出浜1丁目');
 
--- machine_statusesテーブルにデータ挿入
 INSERT INTO machine_statuses (id, status) VALUES
 (1, '貸出可能'),
 (2, 'レンタル中'),
