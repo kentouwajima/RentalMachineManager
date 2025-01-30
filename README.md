@@ -1,2 +1,2 @@
-# RentalMachineManager
+# レンタル重機管理システム
  
