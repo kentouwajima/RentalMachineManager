@@ -45,12 +45,10 @@
 ## 使用イメージ
 ### 機材一覧ページ
 #### 一覧表示
-
-
 https://github.com/user-attachments/assets/769bb96e-30bc-49a7-af7a-10be275a4a17
-
-
 #### 機材検索
+https://github.com/user-attachments/assets/857ac6ee-3d73-4597-91fa-e7a69e0a9344
+
 
 
 
