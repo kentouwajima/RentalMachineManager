@@ -53,6 +53,12 @@ https://github.com/user-attachments/assets/58cc8403-7b8d-4a41-863a-544baa00b501
 #### 機材削除
 https://github.com/user-attachments/assets/d5aaebf7-5a82-4bd7-8d74-7804af233b44
 
+### 新規機材登録ページ
+#### 機材登録
+https://github.com/user-attachments/assets/6e3ab846-68ad-4ab7-b173-3afb7efc19ea
+
+
+
 
 
 
