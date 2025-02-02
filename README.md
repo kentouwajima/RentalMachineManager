@@ -45,8 +45,14 @@
 ## 使用イメージ
 ### 機材一覧ページ
 #### 一覧表示
-https://github.com/kentouwajima/RentalMachineManager/blob/21045057212355a96c2922047de181055d02a4bf/images/%E4%B8%80%E8%A6%A7%E8%A1%A8%E7%A4%BA.mp4
+
+
+https://github.com/user-attachments/assets/769bb96e-30bc-49a7-af7a-10be275a4a17
+
+
 #### 機材検索
+
+
 
 
 
