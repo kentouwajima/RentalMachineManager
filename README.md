@@ -57,6 +57,10 @@ https://github.com/user-attachments/assets/d5aaebf7-5a82-4bd7-8d74-7804af233b44
 #### 機材登録
 https://github.com/user-attachments/assets/6e3ab846-68ad-4ab7-b173-3afb7efc19ea
 
+### 新規営業所登録ページ
+#### 営業所登録
+https://github.com/user-attachments/assets/300054c7-0e22-4281-9bb2-916a0cb9a27c
+
 
 
 
