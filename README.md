@@ -48,6 +48,9 @@
 https://github.com/user-attachments/assets/769bb96e-30bc-49a7-af7a-10be275a4a17
 #### 機材検索
 https://github.com/user-attachments/assets/857ac6ee-3d73-4597-91fa-e7a69e0a9344
+#### 機材編集
+https://github.com/user-attachments/assets/58cc8403-7b8d-4a41-863a-544baa00b501
+
 
 
 
