@@ -36,11 +36,11 @@
 ## 使用技術
 | 分類 | 技術・ツール |
 |------|-------------|
-| バックエンド | Spring Boot（Java）+ MyBatis |
+| バックエンド | Java + Spring Boot |
 | フロントエンド | Thymeleaf + Bootstrap |
 | データベース | MySQL |
-| インフラ | AWS（EC2, RDS, ALB） |
-| デプロイ | AWS |
+| インフラ | AWS（EC2, RDS, ALB, IAM） |
+| ツール | MyBatis + GitHub + intellij IDEA + VS Code  |
 
 ## 使用イメージ
 ### 機材一覧ページ
