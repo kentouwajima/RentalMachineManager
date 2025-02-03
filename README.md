@@ -65,7 +65,8 @@ https://github.com/user-attachments/assets/111ecdb9-0f65-49ea-8ce8-3809a6834d52
 
 ## 設計書
 ### ER図
-<img width="791" alt="ER図" src="https://github.com/user-attachments/assets/98540f17-c1dd-4ed0-83e0-1ba727b554cc" />
+<img width="769" alt="ER図" src="https://github.com/user-attachments/assets/734342f3-0c56-4a8a-a352-059f0e6065e6" />
+
 
 
 
