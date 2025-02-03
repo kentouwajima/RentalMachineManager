@@ -63,6 +63,13 @@ https://github.com/user-attachments/assets/300054c7-0e22-4281-9bb2-916a0cb9a27c
 #### 営業所編集
 https://github.com/user-attachments/assets/111ecdb9-0f65-49ea-8ce8-3809a6834d52
 
+## 設計書
+### ER図
+<img width="791" alt="ER図" src="https://github.com/user-attachments/assets/98540f17-c1dd-4ed0-83e0-1ba727b554cc" />
+
+
+
+
 
 
 
