@@ -67,6 +67,9 @@ https://github.com/user-attachments/assets/111ecdb9-0f65-49ea-8ce8-3809a6834d52
 ### ER図
 <img width="769" alt="ER図" src="https://github.com/user-attachments/assets/734342f3-0c56-4a8a-a352-059f0e6065e6" />
 
+### インフラ構成図
+<img width="806" alt="インフラ構成図" src="https://github.com/user-attachments/assets/979920ca-e762-4d5d-bc98-edff9a9f5e28" />
+
 
 
 
